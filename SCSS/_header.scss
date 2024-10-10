@@ -1,0 +1,29 @@
+h1 {
+    font-weight: bold;
+    margin-right: 2%;
+    margin-bottom: 0;
+}
+
+.nav-item{
+    margin-right: 5%;
+}   
+
+header{
+    border-bottom: solid 1px black;
+}
+
+.btn-outline-success{
+    color: lightblue;
+    border: 1px solid lightblue;
+}
+
+.btn-outline-success:hover{
+    color: white;
+    background-color: lightblue;
+    border: 1px solid lightblue;
+}
+
+.d-flex{
+    margin-right: 25%;
+    width: 54%;
+}

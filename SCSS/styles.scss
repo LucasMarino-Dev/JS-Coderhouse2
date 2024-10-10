@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
+@import "_index";
+@import "_footer";
+@import "_mobile";
+@import "_header";
+@import "_carrito";
+@import "_productos";
