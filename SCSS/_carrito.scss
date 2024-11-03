@@ -57,10 +57,30 @@
 
 #carrito-total{
     display: flex;
-    justify-content: flex-end;
-    padding-right: 9%;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 5%;
     font-weight: bolder;
     font-size: x-large;
+    span{
+        align-self: flex-end;
+    }
+}
+
+#btn-finalizar-compra{
+    border-radius: 10px;
+    padding: 2%;
+    font-size: medium;
+    font-weight: bolder;
+    margin: auto;
+    margin-bottom: 10%;
+    color: blue;
+    background-color: transparent;
+    border: solid 2px blue;
+    &:hover{
+        background-color: blue;
+        color: white;
+    }
 }
 
 
@@ -109,6 +129,7 @@
     border: solid 2px grey;
     margin-bottom: 2%;
     border-radius: 25px;
+    box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.2);
     img{
     width: 100%;
     }
@@ -171,4 +192,74 @@
     span{
         font-size: x-large;
     }
+}
+
+#dialog-finalizar-compra{
+    margin: auto;
+    width: 40%;
+    height: 75%;
+    padding: 1%;
+    box-shadow: 0 0 12px 10px rgba(51, 49, 49, 0.55);
+    ::backdrop{
+        background-color: rgba(0, 0, 0, 0.55);
+    }
+    h3{
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        font-weight: bold;
+    }
+}
+
+#dialog-finalizar-compra.showModal{
+    visibility: visible;
+    opacity: 1;
+}
+
+#btn-cerrar-dialog{
+    margin: 2%;
+    padding: revert;
+    border-radius: 25px;
+    border: solid 1px red;
+    background-color: transparent;
+    color: red;
+    width: auto;
+
+}
+
+.input-container-finalizar-compra{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 3%;
+}
+
+#datos-comprador{
+    width: 100%;
+}
+
+.input-finalizar-compra{
+    align-items: center;
+    margin: 1%;
+    width: 100%;
+    span{
+        display: block;
+        font-weight: bolder;
+        align-self: flex-start;
+    }
+    input{
+        border: solid 2px grey;
+        width: 100%;
+        padding: 2%;
+        border-radius: 6px;
+    }
+}
+
+#btn-comprar{
+    padding: revert;
+    align-self: flex-end;
+    margin-top: 2%;
+    margin-right: 4%;
+    border-radius: 6px;
+    width: 40%;
 }

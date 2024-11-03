@@ -1,92 +1,13 @@
-let auriculares = [
-    {
-        nombre: "Auriculares ejemplo 1",
-        color: "negros",
-        marca: "JBL",
-        precio: 15000,
-        id: 1,
-        cantidad: 1,
-        img: "../images/auriculares-ejemplo-1.jpg"
-    },
-    {
-        nombre: "Auriculares ejemplo 2",
-        color: "negros",
-        marca: "Xiaomi",
-        precio: 18000,
-        cantidad: 1, 
-        id: 2,
-        img: "../images/auriculares-ejemplo-2.jpg"
-    },
-    {
-        nombre: "Auriculares ejemplo 3",
-        color: "negros",
-        marca: "JBL",
-        precio: 30000,
-        cantidad: 1,
-        id: 3,
-        img: "../images/auriculares-ejemplo-3.jpg"
-    }
-] 
+let arrayProductos = []
 
-let cargadores = [
-    {
-        nombre: "Cargador ejemplo 1",
-        color: "blanco",
-        marca: "Samsung",
-        precio: 10000,
-        cantidad: 1,
-        id: 4, 
-        img: "../images/cargador-ejemplo-1.jpg"
-    },
-    {
-        nombre: "Cargador ejemplo 2",
-        color: "blanco",
-        marca: "Gadnic",
-        precio: 20000,
-        cantidad: 1,
-        id: 5, 
-        img: "../images/cargador-ejemplo-2.jpg"
-    },
-    {
-        nombre: "Cargador ejemplo 3",
-        color: "Negro",
-        marca: "Universal",
-        precio: 17000,
-        cantidad: 1,
-        id: 6, 
-        img: "../images/cargador-ejemplo-3.jpg"
-    }
-]
 
-let fundas = [
-    {
-        nombre: "Funda ejemplo 1",
-        color: "Negro",
-        marca: "Iphone 11",
-        precio: 10000,
-        cantidad: 1,
-        id: 7, 
-        img: "../images/funda-ejemplo-1.jpg"
-    },
-    {
-        nombre: "Funda ejemplo 2",
-        color: "Noche estrellada",
-        marca: "Iphone X",
-        precio: 12000,
-        cantidad: 1, 
-        id: 8, 
-        img: "../images/funda-ejemplo-2.jpg"
-    },
-    {
-        nombre: "Funda ejemplo 3",
-        color: "Seleccionar",
-        marca: "Samsung",
-        precio: 8000,
-        cantidad: 1,
-        id: 9, 
-        img: "../images/funda-ejemplo-3.jpg"
-    }
-]
+fetch("../DB/data.JSON")
+    .then(response => response.json())
+    .then(data => {
+        arrayProductos = data,
+        renderProductos(arrayProductos)
+    })
+    .catch(error => console.error("Error al cargar productos", error))
 
 
 let productos = document.getElementById("productos")
@@ -108,9 +29,6 @@ function renderProductos(arrayProductos) {
     })
 }
 
-renderProductos(auriculares)
-renderProductos(cargadores)
-renderProductos(fundas)
 
 //CARRITO
 
@@ -121,7 +39,7 @@ function agregarProducto () {
     btnAgregarProducto.forEach((btn) => {
         btn.onclick = (e) => {
             const productoID = parseInt(e.currentTarget.id)
-            const productoSeleccionado = [...auriculares, ...cargadores, ...fundas].find((producto) => producto.id === productoID)
+            const productoSeleccionado = arrayProductos.find((producto) => producto.id === productoID)
             const productoEnCarrito = carrito.find((producto) => producto.id === productoID)
             if (productoEnCarrito) {
                 productoEnCarrito.cantidad++

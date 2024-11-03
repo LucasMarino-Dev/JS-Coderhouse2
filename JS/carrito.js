@@ -34,7 +34,7 @@ function renderProductos(elementosCarrito) {
     sumaTotal(elementosCarrito)
 }
 
-if (carritoStorage.length > 1) {
+if (carritoStorage.length > 0) {
     renderProductos(carritoStorage)
 }
 
@@ -91,6 +91,52 @@ function sumaTotal (elementosCarrito) {
     const carritoTotal = document.querySelector("#carrito-total span")
     carritoTotal.innerHTML = "Total: $" + total.toFixed(2) 
 }
+
+
+//DIALOG FINALIZAR COMPRA 
+dialogFinalizarCompra = document.getElementById("dialog-finalizar-compra")
+btnFinalizarCompra = document.getElementById("btn-finalizar-compra")
+btnCerrarDialog = document.getElementById("btn-cerrar-dialog")
+
+btnFinalizarCompra.addEventListener("click", () =>{
+    dialogFinalizarCompra.showModal()
+})
+btnCerrarDialog.addEventListener("click", () =>{
+    dialogFinalizarCompra.close()
+})
+
+//CHEKERS COMPRADOR
+const telefonoInput = document.getElementById("telefono-dialog-finalizar-compra")
+telefonoInput.addEventListener("input", () =>{
+    telefonoInput.value = telefonoInput.value.replace(/[^0-9]/g, "")
+})
+
+const inputContainerFinalizarCompra = document.getElementById("input-container-finalizar-compra")
+const btnComprar = document.getElementById("btn-comprar")
+const mensajeError = document.getElementById("mensaje-error")
+const datosComprador = document.getElementById("datos-comprador")
+
+function validarFormulario () {
+    const telefonoValido = telefonoInput.value.length === 10
+    const datosValidos = datosComprador.checkValidity()
+
+    btnComprar.disabled = !(telefonoValido && datosValidos)
+}
+
+datosComprador.addEventListener("input", validarFormulario) 
+
+btnComprar.onclick = () => {
+    Swal.fire({
+        title: "¡Gracias por comprar con nosotros!",
+        text: "Te enviaremos un mensaje con tus datos de compra y opciones de metodos de pago",
+        icon: "success"
+    });
+    localStorage.clear()
+}
+
+
+
+validarFormulario()
 
 function renderResumen (elementosCarrito){
     carritoResumen.innerHTML = ""
